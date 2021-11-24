@@ -1,33 +1,32 @@
 import { Component } from '@angular/core';
 
-
-
 class Language {
-  #code:any='en';
-  #name:any='english';
-  #rtl:boolean=false;
-  #default:boolean=false;
+  private code:string='en';
+  private name:string='english';
+  private rtl:boolean=false;
+  private default:boolean=false;
 
   constructor(property:any){
-    this.#code=property.code;
-    this.#name=property.name;
-    this.#rtl=property.rtl;
-    this.#default=property.default;
+    this.code=property.code;
+    this.name=property.name;
+    this.rtl=property.rtl;
+    this.default=property.default;
   }
   get  codeInfo() {
-    return this.#code;
+    return this.code;
   }
   get nameInfo() {
-    return this.#name
+    return this.name
   }
   get isRTL() {
-    return this.#rtl
+    return this.rtl
   }
   get isDefault() {
-    return this.#default
+    return this.default
   }
 
 }
+
 
 let lang1= new Language({
   code:'ru',
@@ -37,6 +36,7 @@ let lang1= new Language({
 });
 
 console.log(lang1.isDefault);
+
 
 
 
