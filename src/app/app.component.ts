@@ -1,16 +1,35 @@
 import { Component } from '@angular/core';
 
+const languageData = [{
+  code: 'en',
+  name: 'English',
+  rtl: false,
+  defaults: true,
+  },
+  {
+  code: 'ru',
+  name: 'Russian',
+  rtl: false,
+  defaults: false,
+  },
+  {
+  code: 'ar',
+  name: 'Arabic',
+  rtl: true,
+  defaults: false,
+  },
+  ];
 class Language {
-  private code:string='en';
-  private name:string='english';
-  private rtl:boolean=false;
-  private default:boolean=false;
+  code:string='en';
+  name:string='english';
+  rtl:boolean=false;
+  defaults:boolean=false;
 
   constructor(property:any){
     this.code=property.code;
     this.name=property.name;
     this.rtl=property.rtl;
-    this.default=property.default;
+    this.defaults=property.defaults;
   }
   get  codeInfo() {
     return this.code;
@@ -22,29 +41,38 @@ class Language {
     return this.rtl
   }
   get isDefault() {
-    return this.default
+    return this.defaults
   }
 
 }
 
-
-let lang1= new Language({
-  code:'ru',
-  name:'russia',
-  rtl :true,
-  default:true
+const languages = languageData.map((item)=>{
+  return new Language(item);
 });
+console.log(languages);
 
-console.log(lang1.isDefault);
+function isRTL (languages:any) {
 
+  const rtlLang=languages.filter((lang:any)=>{
+    return lang.rtl ==true;
+  });
 
+  return rtlLang;
+  
+}
 
+function isDefault (languages:any) {
 
+  const defaultLang=languages.filter((lang:any)=>{
+    return lang.defaults == true;
+  });
 
+  return defaultLang;
+  
+}
 
-
-
-
+console.log(isRTL(languages));
+console.log(isDefault(languages));
 
 
 
