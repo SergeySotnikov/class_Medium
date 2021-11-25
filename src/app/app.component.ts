@@ -57,7 +57,7 @@ function isRTL (languages:any) {
     return lang.rtl ==true;
   });
 
-  return rtlLang;
+  rtlLang.forEach((item:any)=> console.log(`${item.name} - is rtl`));
   
 }
 
@@ -67,12 +67,11 @@ function isDefault (languages:any) {
     return lang.defaults == true;
   });
 
-  return defaultLang;
+  defaultLang.forEach((item:any)=> console.log(`${item.name} - is Default`));
   
 }
-
-console.log(isRTL(languages));
-console.log(isDefault(languages));
+isRTL(languages);
+isDefault(languages);
 
 
 
